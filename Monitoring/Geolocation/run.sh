@@ -98,7 +98,7 @@ done
 # shellcheck disable=SC2034
 MAP="map.svg";
 NEW_MAP="new_map.svg";
-cp "$MAP" "$NEW_MAP";
+FILE=$(cat "$MAP")
 
 for COUNTRY in "${!StatisticCountry[@]}"; do
   # shellcheck disable=SC2004
@@ -124,7 +124,7 @@ for COUNTRY in "${!StatisticCountry[@]}"; do
   if [ "$STRING" ]; then
     NEW_STRING=$(sed -e "s/818181/$COLOR/; s/fill-opacity=\"0\"/fill-opacity=\"1\"/" <<< "$STRING")
     echo $NEW_STRING;
-    sed -i "" "s|$STRING|$NEW_STRING|g" "$NEW_MAP"
+    FILE=$(sed -e "s|$STRING|$NEW_STRING|" <<< "$FILE")
   fi
   # shellcheck disable=SC2074
   # shellcheck disable=SC1072
@@ -134,6 +134,7 @@ for COUNTRY in "${!StatisticCountry[@]}"; do
     printf "COUNTRY: %s, Servers: %s, Current Percent: %s\r\n" "$COUNTRY" "${StatisticCountry[$COUNTRY]}" "$PERCENT%"
   fi
 done
+echo "$FILE" >> "$NEW_MAP"
 
 ##CITIES
 # shellcheck disable=SC2028
