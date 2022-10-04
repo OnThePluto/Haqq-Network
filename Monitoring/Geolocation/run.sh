@@ -119,11 +119,9 @@ for COUNTRY in "${!StatisticCountry[@]}"; do
     COLOR="4B0082";
   fi
   # shellcheck disable=SC2002
-  STRING=$("$FILE" | grep "$COUNTRY" | sed -e 's/^[[:space:]]*//' | awk -F 'transform' '{print $2}');
-  echo $STRING;
+  STRING=$(cat "$MAP" | grep "$COUNTRY" | sed -e 's/^[[:space:]]*//' | awk -F 'transform' '{print $2}');
   if [ "$STRING" ]; then
     NEW_STRING=$(sed -e "s/818181/$COLOR/; s/fill-opacity=\"0\"/fill-opacity=\"1\"/" <<< "$STRING")
-    echo $NEW_STRING;
     FILE=$(sed -e "s|$STRING|$NEW_STRING|" <<< "$FILE")
   fi
   # shellcheck disable=SC2074
