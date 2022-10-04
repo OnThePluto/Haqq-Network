@@ -1,10 +1,6 @@
 #!/usr/local/bin/bash
 
 ADDRBOOK="$HOME/.haqqd/config/addrbook.json"
-
-read -p "Enter your path to addrbook [default $ADDRBOOK]:" ADDRBOOK
-echo 'export ADDRBOOK='${ADDRBOOK:=$ADDRBOOK} >> $HOME/.bash_profile
-
 if [ -z "$ADDRBOOK" ]; then
   echo "Please configure addrbook.json in script"
   exit 1
@@ -126,7 +122,7 @@ for COUNTRY in "${!StatisticCountry[@]}"; do
   STRING=$(cat "$NEW_MAP" | grep "$COUNTRY" | sed -e 's/^[[:space:]]*//' | awk -F 'transform' '{print $2}');
   if [ "$STRING" ]; then
     NEW_STRING=$(sed -e "s/818181/$COLOR/; s/fill-opacity=\"0\"/fill-opacity=\"1\"/" <<< "$STRING")
-    sed -i "" "s|$STRING|$NEW_STRING|g" "$NEW_MAP"
+    sed "s|$STRING|$NEW_STRING|g" "$NEW_MAP"
   fi
   # shellcheck disable=SC2074
   # shellcheck disable=SC1072
