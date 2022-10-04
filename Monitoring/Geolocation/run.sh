@@ -6,7 +6,12 @@ if [ -z "$ADDRBOOK" ]; then
   exit 1
 fi
 
-GEO_DATA="$HOME/geolocation/data"
+GEO_DATA_DIR="$HOME/geolocation"
+if [ ! -d "$GEO_DATA_DIR" ]; then
+  mkdir "$GEO_DATA_DIR";
+fi
+
+GEO_DATA="$GEO_DATA_DIR/data"
 if [ ! -d "$GEO_DATA" ]; then
   mkdir "$GEO_DATA";
 fi
