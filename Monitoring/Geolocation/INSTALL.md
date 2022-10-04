@@ -21,7 +21,7 @@ cd $HOME && rm -rf Haqq-Network && git clone https://github.com/OnThePluto/Haqq-
 
 ![countries](https://github.com/OnThePluto/Haqq-Network/blob/main/Monitoring/Geolocation/images/country_statistic.png)
 
-### Country & city statistic
+### Provider statistic
 
 ![providers](https://github.com/OnThePluto/Haqq-Network/blob/main/Monitoring/Geolocation/images/provider_statistic.png)
 
