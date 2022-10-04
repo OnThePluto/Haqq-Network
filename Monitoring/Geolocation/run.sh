@@ -1,8 +1,10 @@
 #!/usr/local/bin/bash
 
 ADDRBOOK="$HOME/.haqqd/config/addrbook.json"
+read -e -p "Enter your path to addrbook [default]: " ADDRBOOK
+ADDRBOOK=${ADDRBOOK:-default}
 if [ -z "$ADDRBOOK" ]; then
-  echo "please configure addrbook.json in script"
+  echo "Please configure addrbook.json in script"
   exit 1
 fi
 
@@ -14,6 +16,10 @@ fi
 GEO_DATA="$GEO_DATA_DIR/data"
 if [ ! -d "$GEO_DATA" ]; then
   mkdir "$GEO_DATA";
+fi
+
+if [ -f "$bash_profile" ]; then
+    . $HOME/.bash_profile
 fi
 
 declare -a Countries Cities Organizations;
