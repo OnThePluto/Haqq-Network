@@ -14,7 +14,7 @@ By default, we will search for network peers in a specialized file at: $HOME/.ha
 ## Run service
 
 ```bash
-cd $HOME && rm -rf Haqq-Network && git clone https://github.com/OnThePluto/Haqq-Network.git && cd Haqq-Network/Monitoring/Geolocation && bash run.sh
+cd $HOME && rm -rf Haqq-Network && git clone https://github.com/OnThePluto/Haqq-Network.git && cd Haqq-Network/Monitoring/Geolocation && chmod +x run.sh && bash run.sh
 ```
 
 ### Country & city statistic 
