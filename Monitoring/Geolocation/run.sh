@@ -98,7 +98,7 @@ done
 # shellcheck disable=SC2034
 MAP="map.svg";
 NEW_MAP="new_map.svg";
-FILE=$(cat "$MAP")
+FILE=$(cat "$MAP");
 
 for COUNTRY in "${!StatisticCountry[@]}"; do
   # shellcheck disable=SC2004
@@ -119,7 +119,7 @@ for COUNTRY in "${!StatisticCountry[@]}"; do
     COLOR="4B0082";
   fi
   # shellcheck disable=SC2002
-  STRING=$(cat "$NEW_MAP" | grep "$COUNTRY" | sed -e 's/^[[:space:]]*//' | awk -F 'transform' '{print $2}');
+  STRING=$("$FILE" | grep "$COUNTRY" | sed -e 's/^[[:space:]]*//' | awk -F 'transform' '{print $2}');
   echo $STRING;
   if [ "$STRING" ]; then
     NEW_STRING=$(sed -e "s/818181/$COLOR/; s/fill-opacity=\"0\"/fill-opacity=\"1\"/" <<< "$STRING")
