@@ -120,9 +120,11 @@ for COUNTRY in "${!StatisticCountry[@]}"; do
   fi
   # shellcheck disable=SC2002
   STRING=$(cat "$NEW_MAP" | grep "$COUNTRY" | sed -e 's/^[[:space:]]*//' | awk -F 'transform' '{print $2}');
+  echo $STRING;
   if [ "$STRING" ]; then
     NEW_STRING=$(sed -e "s/818181/$COLOR/; s/fill-opacity=\"0\"/fill-opacity=\"1\"/" <<< "$STRING")
-    sed "s|$STRING|$NEW_STRING|g" "$NEW_MAP"
+    echo $NEW_STRING;
+    sed -i "" "s|$STRING|$NEW_STRING|g" "$NEW_MAP"
   fi
   # shellcheck disable=SC2074
   # shellcheck disable=SC1072
