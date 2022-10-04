@@ -100,8 +100,8 @@ for COUNTRY in ${UniqCountries[*]}; do
 done
 
 # shellcheck disable=SC2034
-MAP="$HOME/Code/Haqq-Network/Monitoring/Geolocation/map.svg";
-NEW_MAP="$HOME/Code/Haqq-Network/Monitoring/Geolocation/new_map.svg";
+MAP="$HOME/Haqq-Network/Monitoring/Geolocation/map.svg";
+NEW_MAP="$HOME/Haqq-Network/Monitoring/Geolocation/new_map.svg";
 cp "$MAP" "$NEW_MAP";
 
 for COUNTRY in "${!StatisticCountry[@]}"; do
