@@ -1,8 +1,10 @@
 #!/usr/local/bin/bash
 
 ADDRBOOK="$HOME/.haqqd/config/addrbook.json"
-read -e -p "Enter your path to addrbook [default]: " ADDRBOOK
-ADDRBOOK=${ADDRBOOK:-default}
+
+read -p "Enter your path to addrbook [default]:" ADDRBOOK
+echo 'export ADDRBOOK='${ADDRBOOK:-default} >> $HOME/.bash_profile
+
 if [ -z "$ADDRBOOK" ]; then
   echo "Please configure addrbook.json in script"
   exit 1
